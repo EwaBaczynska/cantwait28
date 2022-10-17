@@ -2,6 +2,8 @@ import 'package:cantwait28/features/add/cubit/add_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../repositories/items_repository.dart';
+
 class AddPage extends StatefulWidget {
   const AddPage({
     Key? key,
@@ -19,7 +21,7 @@ class _AddPageState extends State<AddPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AddCubit(),
+      create: (context) => AddCubit(ItemsRepository()),
       child: BlocListener<AddCubit, AddState>(
         listener: (context, state) {
           if (state.saved) {
